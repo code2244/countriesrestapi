@@ -1,1 +1,1 @@
-# Countrie Information App.
+# Countries Information App.
