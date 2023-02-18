@@ -12,6 +12,7 @@ export type Countries = {
   "demonym": string,
 }
 function App() {
+
   const [countries, setCountries] = useState<Countries[] | null>();
   useEffect(() => {
     const url = 'http://localhost:3001/countries'
