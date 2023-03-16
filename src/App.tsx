@@ -11,9 +11,9 @@ export type Countries = {
   "population": number,
   "demonym": string,
 }
-function App() {
+function App(): JSX.Element {
 
-  const [countries, setCountries] = useState<Countries[] | null>();
+  const [countries, setCountries] = useState<Countries[]>([]);
   useEffect(() => {
     const url = 'http://localhost:3001/countries'
     axios.get(url).then((response) => {
@@ -21,8 +21,10 @@ function App() {
     })
     // use empty dependency arr execute once the page load
   }, []);
-  return <div className="App">{countries ? countries.map((countries) => {
-    return <p>{countries.name}</p> }) : null}</div>
+  
+  // if length property exists, map countries
+  // if length doesn't exist, render the p tag with loading message
+  return countries.length ? (<>{countries.map((countries) => <p key={countries.name}>{countries.name }</p>)}</>) : (<p>Loading...</p>)
 }
 
 export default App;
